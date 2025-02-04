@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 function Animals() {
 
-    // add key press event listener to navigate between slides left and right
+
     const handleKeyPress = (event) => {
         if (event.key === "ArrowLeft") {
             prevSlide();
@@ -16,13 +16,12 @@ function Animals() {
         }
     };
 
-    // Using React's useEffect for proper cleanup
     useEffect(() => {
-        window.addEventListener('keydown', handleKeyPress);
+        window.addEventListener('keyup', handleKeyPress);
 
         // Cleanup function to remove event listener when component unmounts
         return () => {
-            window.removeEventListener('keydown', handleKeyPress);
+            window.removeEventListener('keyup', handleKeyPress);
         };
     }, []);
 

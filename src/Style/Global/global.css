@@ -2,13 +2,13 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Alexandria";
+  font-family: 'Alexandria';
 }
 
 :root {
   --blu1: #2C8DB4;
   --blu2: #2C8DB4;
-  --yell: #FEA30A;
+  --yell:  #FEA30A;
   --red: #E9474C;
 }
 
@@ -18,4 +18,5 @@ a {
 
 ul {
   list-style-type: none;
-}/*# sourceMappingURL=global.css.map */
+}
+/*# sourceMappingURL=global.css.map */

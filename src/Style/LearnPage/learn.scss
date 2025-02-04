@@ -22,7 +22,7 @@
         //         align-items: center;
         //         justify-content: center;
         //         flex-direction: column;
-            
+
         //         h2 {
         //             font-size: 35px;
         //         }
@@ -58,6 +58,11 @@
             flex-wrap: wrap;
             gap: 40px;
             margin-bottom: 120px;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
 
             a {
                 color: #fff;
@@ -73,8 +78,9 @@
                     padding: 10px 30px;
 
                     &:hover {
-                        opacity:0.9
+                        opacity: 0.9
                     }
+
                     &:hover img {
                         width: 85px
                     }
@@ -91,13 +97,11 @@
                             margin-bottom: 12px
                         }
 
-                        p {
-
-                        }
+                        p {}
                     }
                 }
             }
-        } 
+        }
 
         // .learn-test {
         //     display: flex;
@@ -112,7 +116,7 @@
 }
 
 .learn-page {
-    
+
     .memorize-words {
         height: 86vh;
         display: flex;
@@ -129,16 +133,17 @@
             align-items: center;
             justify-content: center;
             gap: 50px;
-    
+
             .arrow {
                 background-color: transparent;
                 border: none;
                 cursor: pointer;
-    
+
                 img {
                     width: 50px
                 }
             }
+
             .left-arrow {
                 transform: rotate(180deg)
             }
@@ -147,7 +152,7 @@
         .start-test {
             text-align: center;
             margin-top: 70px;
-    
+
             button {
                 width: 10em
             }
