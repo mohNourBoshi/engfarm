@@ -1,9 +1,30 @@
 import React, { useState } from "react";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
-import {AnimalsWords} from "../../Data/testData"
+import { AnimalsWords } from "../../Data/testData"
 import toast, { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
+
 function Animals() {
+
+    // add key press event listener to navigate between slides left and right
+    const handleKeyPress = (event) => {
+        if (event.key === "ArrowLeft") {
+            prevSlide();
+        } else if (event.key === "ArrowRight") {
+            nextSlide();
+        }
+    };
+
+    // Using React's useEffect for proper cleanup
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyPress);
+
+        // Cleanup function to remove event listener when component unmounts
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
 
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,15 +43,15 @@ function Animals() {
     };
 
     const getRandomIndex = () => Math.floor(Math.random() * AnimalsWords.length);
-    
+
     const getRandomIndexes = (correctAnswer) => {
         const indexes = [];
         while (indexes.length < 3) {
             const randomIndex = Math.floor(Math.random() * AnimalsWords.length);
-         
+
             if (!indexes.includes(randomIndex)) indexes.push(randomIndex);
         }
-        if (!indexes.includes(correctAnswer)) indexes[Math.floor(Math.random() * 3)]=correctAnswer;
+        if (!indexes.includes(correctAnswer)) indexes[Math.floor(Math.random() * 3)] = correctAnswer;
 
         return indexes;
     };
@@ -42,23 +63,23 @@ function Animals() {
     };
 
     const handleCardClick = (chosenWord) => {
-        const isCorrect = chosenWord === correctAnswer ;
+        const isCorrect = chosenWord === correctAnswer;
         isCorrect ? toast.success("اجابة صحيحة ", {
             icon: '👏',
             duration: 1000,
 
-          }) : toast.error("اجابة خاطئة , حاول مرة أخرى !",{
+        }) : toast.error("اجابة خاطئة , حاول مرة أخرى !", {
             icon: '🤯',
             duration: 1000,
-          });
+        });
         setCorrectAnswer(getRandomIndex());
     };
 
     return (
         <div className="learn-page">
             <Header />
-           
-           {!showTestWindow && <div className="memorize-words">
+
+            {!showTestWindow && <div className="memorize-words">
                 <h2 className="title">تعلم الكلمات و احفظها جيدا</h2>
                 <div className="words-slider">
                     <button onClick={prevSlide} className="right-arrow arrow">
@@ -76,21 +97,21 @@ function Animals() {
                 </div>
 
                 <div className="start-test" onClick={startTest}>
-                        <button className="btn">ابدا الاختبار الان</button>
+                    <button className="btn">ابدا الاختبار الان</button>
                 </div>
             </div>}
 
             {showTestWindow && (
-                
+
                 <div className="test">
-                   
-                        <h1 className="question">
-                            ماذا تعني كلمة - <b>{AnimalsWords[correctAnswer].arW}</b>
-                        </h1>
+
+                    <h1 className="question">
+                        ماذا تعني كلمة - <b>{AnimalsWords[correctAnswer].arW}</b>
+                    </h1>
 
                     <div className="choose-card">
                         {getRandomIndexes(correctAnswer).map((cardIndex, i) => (
-                            <div className="word-card" key={i} onClick={()=>handleCardClick(cardIndex)} >
+                            <div className="word-card" key={i} onClick={() => handleCardClick(cardIndex)} >
                                 <img src={AnimalsWords[cardIndex].img} alt="Animal" />
                                 <h2 className="en-w">{AnimalsWords[cardIndex].enW}</h2>
                                 <h3 className="ar-w">{AnimalsWords[cardIndex].arW}</h3>

@@ -26,32 +26,33 @@ import {
 import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
-  {path: "/", element: <Home />,},
-  {path: "About", element: <About />,},
-  {path: "Learn", element: <Learn />,},
-  {path: "Signup", element: <Signup />,},
-  {path: "Login", element: <Login />,},
-  {path: "Animals", element: <Animals />,},
+  { path: "/", element: <Home />, },
+  { path: "About", element: <About />, },
+  { path: "Learn", element: <Learn />, },
+  { path: "Signup", element: <Signup />, },
+  { path: "Login", element: <Login />, },
+  { path: "Animals", element: <Animals />, },
+  // {path: "Learn/Animals", element: <Animals />,},
 ]);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <Toaster toastOptions={{
-        success: {
-          style: {
-            background: 'green',
-            color:"white"
-          },
+    <Toaster toastOptions={{
+      success: {
+        style: {
+          background: 'green',
+          color: "white"
         },
-        error: {
-          style: {
-            background: 'red',
-            color:"white"
-          },
+      },
+      error: {
+        style: {
+          background: 'red',
+          color: "white"
         },
-      }} />
+      },
+    }} />
     <RouterProvider router={router} />
   </React.StrictMode>
 );
