@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {auth} from '../firebaseconfig';
+import { auth } from '../firebaseconfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 
@@ -11,23 +11,39 @@ function Signup() {
     const signup = async () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-        } catch (err){
+        } catch (err) {
             console.error(err)
         }
     }
 
     return (
         <div className="signup">
+            <header>
+                <div className='logo'>
+                    <img src={require('../Images/Logo/Logo1.png')} />
+                </div>
+
+                <div className="links">
+                    <ul>
+                        <Link to={'/'}><li>login</li></Link>
+                        {/* <Link to={'#'}><li>من نحن</li></Link> */}
+                    </ul>
+
+                    <div className="profile">
+                        <img src={require('../Images/Icons/user.png')} />
+                    </div>
+                </div>
+            </header>
             <div className='signupForm'>
-                
+
                 <div className='left'>
-                    <h1>مرحبا بك</h1>
+                    {/* <h1 className='h1welcome'>مرحبا بك</h1> */}
                     <img src={require('../Images/full-bird.png')} />
                 </div>
 
                 <div className='right'>
                     <div className='title'>
-                        <h2>انشاء حساب</h2>
+                        <h2 className='h1welcome'>انشاء حساب</h2>
                         <p>مرحبا بك في موقع EngFarm لتعليم اللغة الانجليزية</p>
                     </div>
 

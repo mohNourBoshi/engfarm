@@ -21,15 +21,31 @@ function Login() {
 
     return (
         <div className="login">
+            <header>
+                <div className='logo'>
+                    <img src={require('../Images/Logo/Logo1.png')} />
+                </div>
+
+                <div className="links">
+                    <ul>
+                        <Link to={'/'}><li>login</li></Link>
+                        {/* <Link to={'#'}><li>من نحن</li></Link> */}
+                    </ul>
+
+                    <div className="profile">
+                        <img src={require('../Images/Icons/user.png')} />
+                    </div>
+                </div>
+            </header>
             <div className="loginForm">
                 <div className="left">
-                    <h1>مرحبا بعودتك</h1>
                     <img src={require('../Images/full-bird.png')} alt="Welcome Bird" />
                 </div>
 
                 <div className="right">
+                    <h1 className='h1welcome'>مرحبا بعودتك</h1>
                     <div className="title">
-                        <h2>تسجيل الدخول</h2>
+                        {/* <h2>تسجيل الدخول</h2> */}
                         <p>مرحبًا بك في موقع EngFarm لتعليم اللغة الإنجليزية</p>
                     </div>
 
